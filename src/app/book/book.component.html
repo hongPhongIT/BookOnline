@@ -1,3 +1,21 @@
-<p>
-  book works!
-</p>
+<div class="container">
+  <table>
+    <caption>Statement Summary</caption>
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td data-label="Account"> {{book.id}}</td>
+        <td data-label="Due Date">{{book.name}}</td>
+        <td data-label="Amount">{{book.price}}</td>
+        <td data-label="Period">{{book.content}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
