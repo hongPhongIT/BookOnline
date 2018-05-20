@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>
+    Book {{book.name}} detail
+  </h1>
+  <form #bookForm="ngForm" (ngSubmit)="onSubmit(bookForm)">
+    <div class="form-group">
+
+      <input type="hidden" class="form-control" [(ngModel)]="book.id" name="id">
+
+      <label for="name">Book Name:</label>
+      <input class="form-control" [(ngModel)]="book.name" required minlength="6" name="name" #name="ngModel">
+      <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+        <div [hidden]="!name.errors.required">
+          Book title is required!
+        </div>
+        <div [hidden]="!name.errors.minlength">
+          Title must be at least 5 characters long.
+        </div>
+        <div [hidden]="!name.errors.maxlength">
+          Title cannot be more than 30 characters long.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="text" class="form-control" required [(ngModel)]="book.price" name="price" #price="ngModel">
+      <div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger">
+        <div [hidden]="!price.errors.required">
+          Book price is required!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Content:</label>
+      <textarea class="form-control" [(ngModel)]="book.content" required name="content" #content="ngModel"></textarea>
+
+      <div *ngIf="content.errors && (content.dirty || content.touched)" class="alert alert-danger">
+        <div [hidden]="!content.errors.required">
+          Content is required!
+        </div>
+      </div>
+    </div>
+
+    <button name="btn-back" class="btn btn-primary" (click)="goBack()">Back</button>
+    <!-- <button (click)="save()" class="btn btn-primary">Save</button> -->
+    <div *ngIf="!book.id; then thenBlock else elseBlock">
+    </div>
+    <ng-template #thenBlock>
+      <button type="submit" name="btn-save" (click)="saveBook(bookForm.valid)" class="btn btn-primary" [disabled]="!bookForm.form.valid">Save</button>
+    </ng-template>
+    <ng-template #elseBlock>
+      <button type="submit" name="btn-update" (click)="updateBook(bookForm.valid)" class="btn btn-primary" [disabled]="!bookForm.form.valid">update</button>
+    </ng-template>
+  </form>
+</div>

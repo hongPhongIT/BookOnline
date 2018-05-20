@@ -9,27 +9,35 @@ import { BookService } from '../book.service';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
+  itemsPerPage = 10;
+  totalItems = 100;
+  page = 1;
+  p: number = 1;
+  previousPage = 1;
   books: Book[];
 
   constructor(private BookService: BookService) { }
 
   ngOnInit() {
-    this.getBooks();
+    this.loadData();
   }
 
-  getBooks(): void {
-    this.BookService.getBooks()
-    .subscribe(books => this.books = books);
+  loadPage(page: number) {
+    if (page !== this.previousPage) {
+      this.previousPage = page;
+      this.loadData();
+    }
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.BookService.addBook({ name } as Book)
-      .subscribe(hero => {
-        this.books.push(hero);
-      });
+  loadData() {
+    const size = this.itemsPerPage;
+    this.BookService.getBooks(this.page, size).subscribe(books => this.books = books);
   }
+
+  // getBooks(): void {
+  //   this.BookService.getBooks()
+  //     .subscribe(books => this.books = books);
+  // }
 
   delete(book: Book): void {
     this.books = this.books.filter(h => h !== book);

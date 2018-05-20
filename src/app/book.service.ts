@@ -19,8 +19,10 @@ export class BookService {
     private http: HttpClient) { }
 
   /** GET heroes from the server */
-  getBooks (): Observable<Book[]> {
-    return this.http.get<Book[]>(this.BooksUrl)
+  getBooks (page: number, itemPerPage: number): Observable<Book[]> {
+    const url =`${this.BooksUrl}?p=${page}&l=${itemPerPage}`;
+
+    return this.http.get<Book[]>(url)
       .pipe(
         tap(books => this.log(`fetched books`)),
         catchError(this.handleError('getBook', []))
@@ -73,8 +75,8 @@ export class BookService {
   }
 
   /** DELETE: delete the hero from the server */
-  deleteBook (hero: Book | number): Observable<Book> {
-    const id = typeof hero === 'number' ? hero : hero.id;
+  deleteBook (book: Book | number): Observable<Book> {
+    const id = typeof book === 'number' ? book : book.id;
     const url = `${this.BooksUrl}/${id}`;
 
     return this.http.delete<Book>(url, httpOptions).pipe(
@@ -85,8 +87,11 @@ export class BookService {
 
   /** PUT: update the hero on the server */
   updateBook (book: Book): Observable<any> {
-    return this.http.put(this.BooksUrl, book, httpOptions).pipe(
-      tap(_ => this.log(`updated book id=${book.id}`)),
+    const id = typeof book === 'number' ? book : book.id;
+    const url = `${this.BooksUrl}/${id}`;
+
+    return this.http.put(url, book, httpOptions).pipe(
+      tap(_ => this.log(`updated book id=${id}`)),
       catchError(this.handleError<any>('updateBook'))
     );
   }
