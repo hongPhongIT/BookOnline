@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let book of books |  paginate: { itemsPerPage: 10, currentPage: p , totalItems: total}">
+      <tr *ngFor="let book of books">
         <td data-label="Account"> {{book.id}}</td>
         <td data-label="Due Date">
           <a routerLink="/book-detail/{{book.id}}">{{book.name}}</a>
@@ -26,5 +26,11 @@
       </tr>
     </tbody>
   </table>
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <ngb-pagination [collectionSize]="totalItems" [pageSize]="itemsPerPage" [(page)]="page" [maxSize]="7" [rotate]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
 </div>

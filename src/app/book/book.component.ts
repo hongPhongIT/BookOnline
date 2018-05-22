@@ -9,12 +9,12 @@ import { BookService } from '../book.service';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
+  books: Book[];
   itemsPerPage = 10;
   totalItems = 100;
   page = 1;
   p: number = 1;
   previousPage = 1;
-  books: Book[];
 
   constructor(private BookService: BookService) { }
 
