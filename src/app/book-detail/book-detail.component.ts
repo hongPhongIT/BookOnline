@@ -35,19 +35,12 @@ export class BookDetailComponent implements OnInit, OnDestroy {
         this.route.paramMap
         .pipe(switchMap((params: ParamMap) => this.bookService.getBook(+params.get('id')))
         ).subscribe(book => this.book = book);
-       // console.log(this.book.content);
+        // console.log(this.book.content);
       }
 
    });
-
-
-    // .catch(error => {
-    //   // TODO: add real error handling
-    //   console.log(error);
-    //   return Observable.of<Book>();
-    // });
   }
-
+  
   goBack(): void {
     this.location.back();
   }
@@ -69,8 +62,6 @@ export class BookDetailComponent implements OnInit, OnDestroy {
         }
       });
     }
-
-
   }
 
   onSubmit(value: any) {

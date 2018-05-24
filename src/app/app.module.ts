@@ -18,6 +18,7 @@ import { LoginService } from './login.service';
 // import guards
 import { CheckLoginGuard } from './guard/check-login.guard';
 import { CheckSaveBookFormGuard } from './guard/check-save-book-form.guard';
+import { BookSearchComponent } from './book-search/book-search.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CheckSaveBookFormGuard } from './guard/check-save-book-form.guard';
     BookComponent,
     DashboardComponent,
     BookDetailComponent,
-    LoginComponent
+    LoginComponent,
+    BookSearchComponent
   ],
   imports: [
     BrowserModule,

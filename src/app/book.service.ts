@@ -19,8 +19,8 @@ export class BookService {
     private http: HttpClient) { }
 
   /** GET heroes from the server */
-  getBooks (page: number, itemPerPage: number): Observable<Book[]> {
-    const url =`${this.BooksUrl}?p=${page}&l=${itemPerPage}`;
+  getBooks(page: number, itemPerPage: number): Observable<Book[]> {
+    const url = `${this.BooksUrl}?p=${page}&l=${itemPerPage}`;
 
     return this.http.get<Book[]>(url)
       .pipe(
@@ -53,21 +53,21 @@ export class BookService {
   }
 
   /* GET heroes whose name contains search term */
-  // searchHeroes(term: string): Observable<Book[]> {
-  //   if (!term.trim()) {
-  //     // if not search term, return empty hero array.
-  //     return of([]);
-  //   }
-  //   return this.http.get<Book[]>(`${this.heroesUrl}/?name=${term}`).pipe(
-  //     tap(_ => this.log(`found heroes matching "${term}"`)),
-  //     catchError(this.handleError<Book[]>('searchHeroes', []))
-  //   );
-  // }
+  searchBooks(term: string): Observable<Book[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Book[]>(`${this.BooksUrl}/?search=${term}`).pipe(
+      tap(_ => this.log(`found books matching "${term}"`)),
+      catchError(this.handleError<Book[]>('searchBooks', []))
+    );
+  }
 
   //////// Save methods //////////
 
   /** POST: add a new hero to the server */
-  addBook (book: Book): Observable<Book> {
+  addBook(book: Book): Observable<Book> {
     return this.http.post<Book>(this.BooksUrl, book, httpOptions).pipe(
       tap((book: Book) => this.log(`added book w/ id=${book.id}`)),
       catchError(this.handleError<Book>('addBook'))
@@ -75,7 +75,7 @@ export class BookService {
   }
 
   /** DELETE: delete the hero from the server */
-  deleteBook (book: Book | number): Observable<Book> {
+  deleteBook(book: Book | number): Observable<Book> {
     const id = typeof book === 'number' ? book : book.id;
     const url = `${this.BooksUrl}/${id}`;
 
@@ -86,7 +86,7 @@ export class BookService {
   }
 
   /** PUT: update the hero on the server */
-  updateBook (book: Book): Observable<any> {
+  updateBook(book: Book): Observable<any> {
     const id = typeof book === 'number' ? book : book.id;
     const url = `${this.BooksUrl}/${id}`;
 
@@ -102,7 +102,7 @@ export class BookService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure

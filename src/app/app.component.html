@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home
+        <a class="nav-link" routerLink="/dashboard">Dashboard
           <span class="sr-only">(current)</span>
         </a>
       </li>
@@ -16,16 +16,13 @@
         <a class="nav-link" routerLink="/book">Books</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" routerLink="/login">login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <app-book-search></app-book-search>
   </div>
 </nav>
 <router-outlet></router-outlet>
