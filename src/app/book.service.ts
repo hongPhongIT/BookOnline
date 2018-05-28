@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class BookService {
 
-  private BooksUrl = 'https://5af5067f04604e0014ea73ac.mockapi.io/BookStore';  // URL to web api
+  private BooksUrl = 'https://5af5067f04604e0014ea73ac.mockapi.io/books';  // URL to web api
 
   constructor(
     private http: HttpClient) { }

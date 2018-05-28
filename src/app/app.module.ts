@@ -19,6 +19,11 @@ import { LoginService } from './login.service';
 import { CheckLoginGuard } from './guard/check-login.guard';
 import { CheckSaveBookFormGuard } from './guard/check-save-book-form.guard';
 import { BookSearchComponent } from './book-search/book-search.component';
+import { CategoryComponent } from './category/category.component';
+import { ItemComponent } from './item/item.component';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { SearchItemComponent } from './search-item/search-item.component';
+import { BookFrontComponent } from './book-front/book-front.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,12 @@ import { BookSearchComponent } from './book-search/book-search.component';
     DashboardComponent,
     BookDetailComponent,
     LoginComponent,
-    BookSearchComponent
+    BookSearchComponent,
+    CategoryComponent,
+    ItemComponent,
+    MenuBarComponent,
+    SearchItemComponent,
+    BookFrontComponent
   ],
   imports: [
     BrowserModule,
