@@ -1,2 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
 /* @import '~bootstrap/dist/css/bootstrap.min.css'; */
+nav{
+    width: 100%;
+    margin-bottom: 0em;
+    background: #34c663;
+    font-family: 'Poiret One', cursive;
+  }
+  
+  .logo{
+    text-align: center;
+    color: #fff;
+    font-size: 3em;
+    font-weight: 400;
+    font-family: 'Poiret One', cursive;
+  }
+  
+  ul{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    -webkit-transition: max-height 0.5s;
+    transition: max-height 0.5s;
+  }
+  
+  .nav-item{
+    display: inline-block;
+    padding: 20px;
+    font-size: 1.4em;
+    -webkit-transition: background .5s;
+    transition: background .5s
+  }
+  
+  .nav-item:hover{
+    background: #474747;
+    cursor: pointer;
+  }
+  
+  .menu-bar{
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    background:#34c663;
+    text-align: left;
+    padding: 15px 20px;
+    color: #fff;
+    font-size: 1.4em;
+    cursor: pointer;
+    display: none;
+  }
+
+  a{
+    text-decoration: none;
+    color: inherit;
+  }

@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Book } from '../model/book';
-import { BookService } from '../book.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Book } from 'src/app/model/book'
+import { BookService } from 'src/app/service/book.service';
+
 
 @Component({
-  selector: 'app-book-front',
-  templateUrl: './book-front.component.html',
-  styleUrls: ['./book-front.component.css']
+  selector: 'app-item',
+  templateUrl: './item.component.html',
+  styleUrls: ['./item.component.css']
 })
-export class BookFrontComponent implements OnInit {
+export class ItemComponent implements OnInit {
+
   books: Book[];
   itemsPerPage = 8;
   totalItems = 100;

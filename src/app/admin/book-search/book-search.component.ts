@@ -6,8 +6,8 @@ import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
 
-import { Book } from '../model/book';
-import { BookService } from '../book.service';
+import { Book } from 'src/app/model/book';
+import { BookService } from 'src/app/service/book.service';
 
 @Component({
   selector: 'app-book-search',

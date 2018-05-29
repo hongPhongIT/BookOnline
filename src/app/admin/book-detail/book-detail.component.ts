@@ -2,8 +2,8 @@ import { Component, OnInit , OnDestroy} from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
-import {Book} from '../model/book';
-import {BookService} from '../book.service';
+import {Book} from 'src/app/model/book';
+import {BookService} from 'src/app/service/book.service';
 import { Subscription } from 'rxjs';
 
 import { switchMap, map } from 'rxjs/operators';
